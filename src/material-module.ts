@@ -3,6 +3,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {NgModule} from '@angular/core';
+// import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -82,7 +83,8 @@ import {
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
-  ]
+  ],
+  // providers: [{provide: MATERIAL_SANITY_CHECKS, useValue: false}]
 })
 export class DemoMaterialModule {}
 

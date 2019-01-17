@@ -1,0 +1,69 @@
+div.container{
+  width:80%;
+  /* background: white; */
+  margin:auto;
+}
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.add-new {
+position:relative;
+float:right;
+top:20;
+}
+
+.deleteCell {
+  display: none;
+}
+
+tr:hover > .deleteCell{
+ display: block;
+ cursor: pointer;
+}
+
+#textinput{
+  width:200px;
+  height:30px;
+  font-size: 16px;
+  /* text-align: center; */
+  border:1px solid lightgray;
+  border-radius: 5px;
+}
+
+#textinput:focus + .ul{
+  visibility: visible;
+}
+.ul{
+    padding: 5px 0;
+    margin: 0;
+    position: absolute;
+    max-height: 300px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    list-style: none;
+    border: 1px solid lightgray;
+}
+
+.li {
+  border:none;
+  padding:5px;
+  margin:0px 0px;
+  word-wrap: break-word;
+  background: white;
+  z-index:999;
+  min-width: 200px;
+  max-width: 200px;
+  color:black;
+  font-size: 12px;
+  min-height: 35px;
+  text-align: left;
+  cursor: pointer;
+}
+.li:hover{
+  background: gainsboro;
+}
