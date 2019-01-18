@@ -10,7 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import {MatListModule} from '@angular/material/list';
 import {TableSortingExample} from './app/table-sorting-example';
-
+import { AngularDraggableModule } from 'angular2-draggable';
 import { FilterPipe} from './filter.pipe';
 
 @NgModule({
@@ -22,7 +22,8 @@ import { FilterPipe} from './filter.pipe';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatListModule
+    MatListModule,
+    AngularDraggableModule
   ],
   entryComponents: [TableSortingExample],
   declarations: [TableSortingExample,FilterPipe],

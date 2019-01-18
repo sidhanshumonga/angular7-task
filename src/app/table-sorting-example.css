@@ -118,3 +118,7 @@ tr:hover>.deleteCell {
 .active{
   background: #f7f7f7;
 }
+
+tr td, tr th{
+  border:1px solid lightgray;
+}
