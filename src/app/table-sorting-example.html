@@ -1,46 +1,123 @@
 <div class="container table-striped">
-    <button class="add-new" mat-fab color="primary" (click)="addNew()"><mat-icon>add</mat-icon></button>
+  <button class="add-new" mat-fab color="primary" (click)="addNew()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <div class="format-tools-div" *ngIf="header1">
+    <button
+      class="format-tools bold"
+      (click)="bold = !bold; header1 = !header1"
+      [class.active]="bold"
+    >
+      B
+    </button>
+    <button
+      class="format-tools italic"
+      (click)="italic = !italic; header1 = !header1"
+      [class.active]="italic"
+    >
+      I
+    </button>
+    <button
+      class="format-tools underline"
+      (click)="underline = !underline; header1 = !header1"
+      [class.active]="underline"
+    >
+      U
+    </button>
+  </div>
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- index Column -->
+    <ng-container matColumnDef="index">
+      <th
+        id="header"
+        (click)="header1 = !header1"
+        [class.bold]="bold"
+        [class.italic]="italic"
+        [class.underline]="underline"
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        contenteditable="true"
+      >
+        No.
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.index }}</td>
+    </ng-container>
 
-  <!-- index Column -->
-  <ng-container matColumnDef="index">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-    <td mat-cell *matCellDef="let element" > {{element.index}} </td>
-  </ng-container>
+    <!-- Country Name Column -->
+    <ng-container matColumnDef="name">
+      <th
+        id="header"
+        (click)="header1 = !header1"
+        [class.bold]="bold"
+        [class.italic]="italic"
+        [class.underline]="underline"
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        contenteditable="true"
+      >
+        Country Name
+      </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <input
+          id="textinput"
+          [(ngModel)]="element.name"
+          (click)="hidden = true"
+        />
+        <ul class="ul" *ngIf="hidden">
+          <li
+            *ngFor="let c of (ELEMENT_DATA | filter: 'name':element.name:true)"
+          >
+            <button (click)="saveRow(c, i)" class="li">{{ c.name }}</button>
+          </li>
+        </ul>
+      </td>
+    </ng-container>
 
-  <!-- Country Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Country Name </th>
-    <td mat-cell *matCellDef="let element; let i = index" > <input id="textinput" [(ngModel)]= "element.name" (click)="hidden=true" >
-<ul class="ul" *ngIf="hidden">
-  <li *ngFor="let c of ELEMENT_DATA | filter :'name': element.name : true" >
-<button (click)="saveRow(c,i)" class="li"> {{c.name}} </button>
-</li></ul>
- </td>
-  </ng-container>
+    <!-- capital Column -->
+    <ng-container matColumnDef="capital">
+      <th
+        id="header"
+        (click)="header1 = !header1"
+        [class.bold]="bold"
+        [class.italic]="italic"
+        [class.underline]="underline"
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        contenteditable="true"
+      >
+        Capital
+      </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <input
+          id="textinput"
+          [(ngModel)]="element.capital"
+          (click)="hiddenCapital = true"
+        />
+        <ul class="ul" *ngIf="hiddenCapital">
+          <li
+            *ngFor="
+              let c of (ELEMENT_DATA | filter: 'capital':element.capital:true)
+            "
+          >
+            <button (click)="saveRow(c, i)" class="li">{{ c.capital }}</button>
+          </li>
+        </ul>
+      </td>
+    </ng-container>
 
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let element; let i = index" width="25">
+        <mat-icon class="deleteCell" (click)="deleteRow(i)">delete</mat-icon>
+      </td>
+    </ng-container>
 
-  <!-- capital Column -->
-  <ng-container matColumnDef="capital">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> capital </th>
-     <td mat-cell *matCellDef="let element; let i = index"> <input id="textinput" [(ngModel)]= "element.capital" (click)="hiddenCapital=true">
-  <ul class="ul" *ngIf="hiddenCapital">
-  <li *ngFor="let c of ELEMENT_DATA | filter :'capital': element.capital : true">
-<button (click)="saveRow(c,i)" class="li"> {{c.capital}} </button>
-</li></ul>
- </td>
-  </ng-container>
-
-  <ng-container matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
-    <td mat-cell *matCellDef="let element; let i = index" width="25" ><mat-icon class="deleteCell" (click) = "deleteRow(i)">delete</mat-icon> </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
- 
-</table>
-
+    <tr id="header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
 
 <!-- Copyright 2018 Google Inc. All Rights Reserved.
