@@ -21,7 +21,7 @@ export interface PeriodicElement {
 
 
 export class TableSortingExample implements OnInit {
-
+  header1 = false
   constructor(private callingBridge: AjaxserviceService){
 
   }
@@ -30,7 +30,7 @@ export class TableSortingExample implements OnInit {
   hidden : boolean = false;
   hiddenCapital : boolean = false;
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort,{static:false}) sort: MatSort;
 
   ELEMENT_DATA: PeriodicElement[] = [
 ];

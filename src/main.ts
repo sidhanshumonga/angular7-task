@@ -10,8 +10,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import {MatListModule} from '@angular/material/list';
 import {TableSortingExample} from './app/table-sorting-example';
-import { AngularDraggableModule } from 'angular2-draggable';
 import { FilterPipe} from './filter.pipe';
+import { AngularDraggableModule } from 'angular2-draggable'
 
 @NgModule({
   imports: [
